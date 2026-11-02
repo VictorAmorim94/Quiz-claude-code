@@ -1,8 +1,20 @@
 # Quiz Claude Code
+ 
 
 Quiz **Verdadeiro ou Falso** sobre Claude Code, com 4 níveis (Iniciante, Intermediário, Avançado e Misto), explicação a cada resposta e ranking global por nível. As respostas são corrigidas no servidor (Supabase Edge Functions), então o gabarito nunca chega ao navegador.
 
 A especificação completa está em [`prd.md`](./prd.md).
+
+
+## Porque criei só com Claude Code?  
+Projeto criado para teste de criação do PRD com one shot prompt e apenas algumas alterações e correções de bugs no meio do caminho por conta da usabilidade. 
+
+Tudo aqui foi feito com o primeiro rascunho passando pelo Claude Code. 
+1 - Rascunho de como queria a ferramenta
+2 - Brainstorm com a ferramenta para definição de arquitetura e processos 
+3 - Criação das regras de negócio e Skills necessárias
+4 - Execução com testes em cada etapa da usabilidade 
+5 - Deploy na Vercel 
 
 ## Stack
 
