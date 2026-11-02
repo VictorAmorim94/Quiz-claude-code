@@ -6,15 +6,15 @@ config({ path: ['.env.local', '.env'], quiet: true });
 
 const url = process.env.VITE_SUPABASE_URL;
 const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+// A limpeza apaga só as sessões que o próprio teste criou, então roda em
+// qualquer ambiente (o projeto de dev também serve a produção).
 const admin =
-  url && serviceKey && process.env.SUPABASE_ENV === 'dev'
-    ? createClient(url, serviceKey, { auth: { persistSession: false } })
-    : null;
+  url && serviceKey ? createClient(url, serviceKey, { auth: { persistSession: false } }) : null;
 
 /**
  * Fixture automática: registra cada sessão criada pelo teste (resposta do
- * start-session) e, no fim, apaga sessões e entradas de ranking do projeto de
- * DEV, para os testes não poluírem o ranking.
+ * start-session) e, no fim, apaga essas sessões e as entradas de ranking delas,
+ * para os testes não poluírem o ranking.
  */
 export const test = base.extend<{ sessions: string[] }>({
   sessions: [
