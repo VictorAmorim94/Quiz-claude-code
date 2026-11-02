@@ -1,0 +1,31 @@
+# Dependências e build
+node_modules
+dist
+*.tsbuildinfo
+
+# Variáveis de ambiente (chaves do Supabase, salt etc.). Só o exemplo vai pro git.
+.env
+.env.*
+!.env.example
+
+# Testes
+coverage
+playwright-report
+test-results
+blob-report
+playwright/.cache
+
+# Supabase CLI (estado local do link/branches)
+supabase/.temp
+supabase/.branches
+
+# Claude Code: preferências pessoais (as skills e o CLAUDE.md são compartilhados)
+.claude/settings.local.json
+
+# Logs e lixo de SO/editor
+*.log
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea

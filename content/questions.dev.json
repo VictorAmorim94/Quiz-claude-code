@@ -1,0 +1,362 @@
+[
+  {
+    "id": "beg-901",
+    "level": "beginner",
+    "category": "interfaces",
+    "statement": "Claude Code só pode ser usado dentro do VS Code.",
+    "answer": false,
+    "explanation": "Falso. Há CLI no terminal, app desktop, versão web e extensões para VS Code e JetBrains.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "beg-902",
+    "level": "beginner",
+    "category": "fundamentos",
+    "statement": "Claude Code pode executar comandos no terminal, como rodar testes.",
+    "answer": true,
+    "explanation": "Verdadeiro. Ele executa comandos de shell, pedindo permissão conforme as configurações.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "beg-903",
+    "level": "beginner",
+    "category": "fundamentos",
+    "statement": "Só desenvolvedores profissionais conseguem tirar proveito do Claude Code.",
+    "answer": false,
+    "explanation": "Falso. Analistas, PMs e outros perfis usam para análises, scripts, documentação e automações.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "beg-904",
+    "level": "beginner",
+    "category": "seguranca",
+    "statement": "Por padrão, Claude Code pede aprovação antes de ações como editar arquivos ou rodar comandos.",
+    "answer": true,
+    "explanation": "Verdadeiro. O sistema de permissões exige aprovação, que pode ser ajustada nas configurações.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/iam",
+    "active": true
+  },
+  {
+    "id": "beg-905",
+    "level": "beginner",
+    "category": "interfaces",
+    "statement": "[DEV] Afirmação de teste 1 do nível iniciante (gabarito: Verdadeiro).",
+    "answer": true,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "beg-906",
+    "level": "beginner",
+    "category": "seguranca",
+    "statement": "[DEV] Afirmação de teste 2 do nível iniciante (gabarito: Verdadeiro).",
+    "answer": true,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "beg-907",
+    "level": "beginner",
+    "category": "contexto",
+    "statement": "[DEV] Afirmação de teste 3 do nível iniciante (gabarito: Verdadeiro).",
+    "answer": true,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "beg-908",
+    "level": "beginner",
+    "category": "comandos",
+    "statement": "[DEV] Afirmação de teste 4 do nível iniciante (gabarito: Verdadeiro).",
+    "answer": true,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "beg-909",
+    "level": "beginner",
+    "category": "workflows",
+    "statement": "[DEV] Afirmação de teste 5 do nível iniciante (gabarito: Falso).",
+    "answer": false,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "beg-910",
+    "level": "beginner",
+    "category": "fundamentos",
+    "statement": "[DEV] Afirmação de teste 6 do nível iniciante (gabarito: Falso).",
+    "answer": false,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "beg-911",
+    "level": "beginner",
+    "category": "interfaces",
+    "statement": "[DEV] Afirmação de teste 7 do nível iniciante (gabarito: Falso).",
+    "answer": false,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "beg-912",
+    "level": "beginner",
+    "category": "seguranca",
+    "statement": "[DEV] Afirmação de teste 8 do nível iniciante (gabarito: Falso).",
+    "answer": false,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "int-901",
+    "level": "intermediate",
+    "category": "contexto",
+    "statement": "O arquivo `CLAUDE.md` na raiz do projeto é carregado automaticamente como contexto na sessão.",
+    "answer": true,
+    "explanation": "Verdadeiro. Ele serve como memória do projeto: convenções, comandos de build e arquitetura.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/memory",
+    "active": true
+  },
+  {
+    "id": "int-902",
+    "level": "intermediate",
+    "category": "comandos",
+    "statement": "O comando `/init` gera um `CLAUDE.md` inicial analisando o código do projeto.",
+    "answer": true,
+    "explanation": "Verdadeiro. Ele cria um ponto de partida que o time deve revisar e manter.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/memory",
+    "active": true
+  },
+  {
+    "id": "int-903",
+    "level": "intermediate",
+    "category": "comandos",
+    "statement": "No plan mode, Claude Code edita arquivos livremente enquanto monta o plano.",
+    "answer": false,
+    "explanation": "Falso. O plan mode é para pesquisa e planejamento. As edições só começam depois que o plano é aprovado.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/common-workflows",
+    "active": true
+  },
+  {
+    "id": "int-904",
+    "level": "intermediate",
+    "category": "contexto",
+    "statement": "O comando `/compact` resume a conversa para liberar espaço na janela de contexto.",
+    "answer": true,
+    "explanation": "Verdadeiro. Ele condensa o histórico, mantendo o essencial e liberando contexto.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/slash-commands",
+    "active": true
+  },
+  {
+    "id": "int-905",
+    "level": "intermediate",
+    "category": "seguranca",
+    "statement": "O arquivo `.claude/settings.local.json` foi feito para ser commitado e compartilhado com o time.",
+    "answer": false,
+    "explanation": "Falso. Ele guarda preferências pessoais e normalmente fica fora do git. O compartilhado é o `.claude/settings.json`.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/settings",
+    "active": true
+  },
+  {
+    "id": "int-906",
+    "level": "intermediate",
+    "category": "comandos",
+    "statement": "[DEV] Afirmação de teste 1 do nível intermediário (gabarito: Verdadeiro).",
+    "answer": true,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "int-907",
+    "level": "intermediate",
+    "category": "workflows",
+    "statement": "[DEV] Afirmação de teste 2 do nível intermediário (gabarito: Verdadeiro).",
+    "answer": true,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "int-908",
+    "level": "intermediate",
+    "category": "seguranca",
+    "statement": "[DEV] Afirmação de teste 3 do nível intermediário (gabarito: Verdadeiro).",
+    "answer": true,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "int-909",
+    "level": "intermediate",
+    "category": "interfaces",
+    "statement": "[DEV] Afirmação de teste 4 do nível intermediário (gabarito: Falso).",
+    "answer": false,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "int-910",
+    "level": "intermediate",
+    "category": "extensibilidade",
+    "statement": "[DEV] Afirmação de teste 5 do nível intermediário (gabarito: Falso).",
+    "answer": false,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "int-911",
+    "level": "intermediate",
+    "category": "contexto",
+    "statement": "[DEV] Afirmação de teste 6 do nível intermediário (gabarito: Falso).",
+    "answer": false,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "int-912",
+    "level": "intermediate",
+    "category": "comandos",
+    "statement": "[DEV] Afirmação de teste 7 do nível intermediário (gabarito: Falso).",
+    "answer": false,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "adv-901",
+    "level": "advanced",
+    "category": "extensibilidade",
+    "statement": "MCP significa Model Context Protocol, um padrão aberto para conectar ferramentas e fontes de dados ao Claude.",
+    "answer": true,
+    "explanation": "Verdadeiro. Servidores MCP expõem ferramentas e recursos ao Claude Code.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/mcp",
+    "active": true
+  },
+  {
+    "id": "adv-902",
+    "level": "advanced",
+    "category": "extensibilidade",
+    "statement": "Um hook `PreToolUse` pode bloquear a execução de uma ferramenta antes que ela rode.",
+    "answer": true,
+    "explanation": "Verdadeiro. Esses hooks rodam antes da chamada e podem impedi-la, por exemplo saindo com código 2.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/hooks",
+    "active": true
+  },
+  {
+    "id": "adv-903",
+    "level": "advanced",
+    "category": "extensibilidade",
+    "statement": "Subagents compartilham a mesma janela de contexto da conversa principal.",
+    "answer": false,
+    "explanation": "Falso. Cada subagent tem o próprio contexto e devolve só o resultado, o que preserva o contexto principal.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/sub-agents",
+    "active": true
+  },
+  {
+    "id": "adv-904",
+    "level": "advanced",
+    "category": "automacao",
+    "statement": "`claude -p \"...\"` executa o Claude Code em modo não interativo, útil em scripts e CI.",
+    "answer": true,
+    "explanation": "Verdadeiro. É o modo headless/print, que imprime o resultado e encerra.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/headless",
+    "active": true
+  },
+  {
+    "id": "adv-905",
+    "level": "advanced",
+    "category": "extensibilidade",
+    "statement": "Uma skill é definida por uma pasta que contém um arquivo `SKILL.md` com instruções e metadados.",
+    "answer": true,
+    "explanation": "Verdadeiro. O `SKILL.md` descreve quando e como usar a skill e pode trazer arquivos de apoio.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/skills",
+    "active": true
+  },
+  {
+    "id": "adv-906",
+    "level": "advanced",
+    "category": "extensibilidade",
+    "statement": "Hooks são configurados exclusivamente por variáveis de ambiente.",
+    "answer": false,
+    "explanation": "Falso. Hooks são configurados nos arquivos `settings.json` de usuário, projeto ou local.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/hooks",
+    "active": true
+  },
+  {
+    "id": "adv-907",
+    "level": "advanced",
+    "category": "automacao",
+    "statement": "[DEV] Afirmação de teste 1 do nível avançado (gabarito: Verdadeiro).",
+    "answer": true,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "adv-908",
+    "level": "advanced",
+    "category": "workflows",
+    "statement": "[DEV] Afirmação de teste 2 do nível avançado (gabarito: Verdadeiro).",
+    "answer": true,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "adv-909",
+    "level": "advanced",
+    "category": "seguranca",
+    "statement": "[DEV] Afirmação de teste 3 do nível avançado (gabarito: Falso).",
+    "answer": false,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "adv-910",
+    "level": "advanced",
+    "category": "contexto",
+    "statement": "[DEV] Afirmação de teste 4 do nível avançado (gabarito: Falso).",
+    "answer": false,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "adv-911",
+    "level": "advanced",
+    "category": "comandos",
+    "statement": "[DEV] Afirmação de teste 5 do nível avançado (gabarito: Falso).",
+    "answer": false,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  },
+  {
+    "id": "adv-912",
+    "level": "advanced",
+    "category": "extensibilidade",
+    "statement": "[DEV] Afirmação de teste 6 do nível avançado (gabarito: Falso).",
+    "answer": false,
+    "explanation": "Item fictício do fixture de desenvolvimento. Não deve ir para produção.",
+    "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+    "active": true
+  }
+]

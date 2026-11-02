@@ -1,0 +1,5 @@
+# LF em todo o repositório (o Prettier exige LF; evita CRLF do core.autocrlf no Windows)
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ico binary

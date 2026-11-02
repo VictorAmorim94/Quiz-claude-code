@@ -1,0 +1,14 @@
+# Configuração do Supabase CLI. O desenvolvimento usa um projeto Cloud
+# (npx supabase link --project-ref <ref>), não o stack local.
+project_id = "quiz-claude-code"
+
+# As functions são públicas (o front chama com a chave anon/publishable).
+# A proteção vem da validação, do rate limit e da lógica no SQL, não do JWT.
+[functions.start-session]
+verify_jwt = false
+
+[functions.submit-answer]
+verify_jwt = false
+
+[functions.submit-score]
+verify_jwt = false
