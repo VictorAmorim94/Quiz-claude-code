@@ -1,16 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { MemoryRouter } from 'react-router-dom';
-import { App } from './App';
+import { renderApp } from './test/render';
 
-function renderAt(path: string) {
-  return render(
-    <MemoryRouter initialEntries={[path]}>
-      <App />
-    </MemoryRouter>,
-  );
-}
+const renderAt = renderApp;
 
 describe('App', () => {
   it('mostra a Home com CTA e recordes vazios', () => {

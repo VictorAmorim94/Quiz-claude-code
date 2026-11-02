@@ -65,6 +65,15 @@ Source of truth for questions; validated with Zod and upserted by `scripts/seed-
 - Accuracy is critical: verify each item against the current official docs before adding; avoid volatile facts (prices, limits, versions) and undocumented features. When in doubt, drop the question. The calibration examples in §6.5 also need re-verification.
 - User-facing text is PT-BR; technical terms stay in English in code formatting (`CLAUDE.md`, `/init`, `PreToolUse`).
 
+## Client architecture
+
+- `src/lib/api.ts` talks to the backend with plain `fetch` (no `supabase-js` in the bundle) and validates every response with Zod; errors become `ApiError { status, code, retryable }`.
+- Router is a **data router** (`createBrowserRouter`, routes in `src/App.tsx`) because `QuizPage` uses `useBlocker` for the "leave mid-round?" confirmation. Tests render through `src/test/render.tsx` (`createMemoryRouter` + same providers); `src/test/setup.ts` strips `signal` from `Request` because jsdom's `AbortSignal` breaks undici's `Request` on navigation.
+- Round state: pure `quizReducer` (`src/features/quiz/quizReducer.ts`, state machine documented at the top) + `QuizProvider` (side effects, persistence to `qcc:activeSession` on every change, best score on finish). `QuizProvider` wraps `RouterProvider`, so state survives navigation to `/result`. A failed answer goes to `send_failed` and can only be resent with the **same** answer.
+- In `QuizPage`, `useBlocker` must stay declared **before** effects that call `navigate`, otherwise the end-of-round redirect to `/result` is blocked by a stale condition.
+- Leaderboard: `LeaderboardPage` keeps level/period in the query string (`?level=mixed&period=week`), fetches with TanStack Query key `['leaderboard', level, period]`; `NicknameForm` invalidates `['leaderboard', level]` after a successful submit. Client-side nickname check (`src/lib/nickname.ts`) mirrors only the format rules; profanity stays server-side.
+- Tests mock the API with `vi.mock('../lib/api', …)` spreading the real module. Write `beforeEach(() => { mock.mockResolvedValue(…) })` **with braces**: returning the mock makes Vitest call it as a teardown, producing phantom zero-arg calls.
+
 ## Client conventions
 
 - All `localStorage` access goes through `src/lib/storage.ts` wrapped in try/catch; the app must work without it. Keys are prefixed `qcc:` (`theme`, `bestScores`, `recentQuestionIds`, `lastNickname`, `activeSession` — the last one lets a round resume after F5 until it expires).

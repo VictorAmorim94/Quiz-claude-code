@@ -16,6 +16,28 @@ export interface ActiveSession {
   expiresAt: string;
 }
 
+/** Lê a sessão salva, descartando dados corrompidos ou de formato antigo. */
+export function getActiveSession(): ActiveSession | null {
+  const s = read('qcc:activeSession');
+  if (
+    !s ||
+    typeof s.sessionId !== 'string' ||
+    typeof s.level !== 'string' ||
+    typeof s.expiresAt !== 'string' ||
+    !Array.isArray(s.questions) ||
+    !Array.isArray(s.answers) ||
+    s.questions.length === 0
+  ) {
+    return null;
+  }
+  return s;
+}
+
+export function hasFinishedSession(): boolean {
+  const s = getActiveSession();
+  return !!s && s.answers.length >= s.questions.length;
+}
+
 interface Schema {
   'qcc:theme': Theme;
   'qcc:bestScores': Partial<Record<BoardLevel, BestScore>>;
