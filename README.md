@@ -10,11 +10,11 @@ A especificação completa está em [`prd.md`](./prd.md).
 Projeto criado para teste de criação do PRD com one shot prompt e apenas algumas alterações e correções de bugs no meio do caminho por conta da usabilidade. 
 
 Tudo aqui foi feito com o primeiro rascunho passando pelo Claude Code. 
-1 - Rascunho de como queria a ferramenta
-2 - Brainstorm com a ferramenta para definição de arquitetura e processos 
-3 - Criação das regras de negócio e Skills necessárias
-4 - Execução com testes em cada etapa da usabilidade 
-5 - Deploy na Vercel 
+- Rascunho de como queria a ferramenta
+-  Brainstorm com a ferramenta para definição de arquitetura e processos
+-  Criação das regras de negócio e Skills necessárias
+-  Execução com testes em cada etapa da usabilidade
+-  Deploy na Vercel 
 
 ## Stack
 
