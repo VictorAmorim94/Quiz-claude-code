@@ -3,7 +3,17 @@
 @tailwind utilities;
 
 @layer base {
+  /* As cores base ficam no <body>, não no <html>: com darkMode 'class', `dark:`
+     gera `.dark <seletor>`, e a classe .dark está no próprio <html>. */
   html {
+    @apply bg-stone-50;
+    color-scheme: light;
+  }
+  html.dark {
+    @apply bg-stone-950;
+    color-scheme: dark;
+  }
+  body {
     @apply bg-stone-50 text-stone-900 antialiased dark:bg-stone-950 dark:text-stone-100;
   }
   :focus-visible {

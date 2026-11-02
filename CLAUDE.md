@@ -19,7 +19,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run typecheck`
 - `npm test` — Vitest (files `src/**/*.test.{ts,tsx}` and `scripts/**/*.test.ts`). Single test: `npx vitest run src/lib/storage.test.ts -t "test name"`
 - `npm run test:functions` — `deno test` over `supabase/functions` (requires Deno installed)
-- `npm run test:e2e` — Playwright (desktop + 375px mobile projects), starts `npm run dev` itself
+- `npm run test:e2e` — Playwright (desktop + 375px mobile projects) against the **dev Supabase project** (needs `.env.local` and `npx playwright install chromium`); starts `npm run dev` itself. Specs import `test` from `tests/e2e/fixtures.ts`, whose auto fixture records every `start-session` and deletes those sessions/leaderboard rows afterwards — always use it so runs don't pollute the dev ranking. The full-round spec waits ~16s before the last answer because of RN14. `ui.spec.ts` runs axe (WCAG 2.1 AA, serious/critical) in light and dark and checks no horizontal scroll.
+- `npm run lighthouse` — after `npm run build`; runs Lighthouse mobile on `/`, `/play`, `/leaderboard` via `vite preview` + Playwright's Chromium, fails below 90; HTML reports in `lighthouse-report/` (git-ignored)
 - `npm run validate` (`-- --dev` for the fixture) — validates question files offline via `src/content/validate.ts`
 - `npm run seed` (`-- --dev` for the fixture) / `npm run db:reset` / `npm run test:integration` — talk to the **dev Supabase Cloud project** using `VITE_SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` from `.env.local`. `db:reset` refuses to run unless `SUPABASE_ENV=dev`. `test:integration` (`scripts/integration-backend.ts`) is the only test of the SQL rules (order, once-only, idempotent retry, expiry, suspicious run, RLS)
 - CI (GitHub Actions) must pass lint, typecheck, tests and build.
@@ -77,6 +78,7 @@ Source of truth for questions; validated with Zod and upserted by `scripts/seed-
 ## Client conventions
 
 - All `localStorage` access goes through `src/lib/storage.ts` wrapped in try/catch; the app must work without it. Keys are prefixed `qcc:` (`theme`, `bestScores`, `recentQuestionIds`, `lastNickname`, `activeSession` — the last one lets a round resume after F5 until it expires).
-- Theme: `light | dark | system`, defaulting to `prefers-color-scheme`.
+- Theme: `light | dark | system`, defaulting to `prefers-color-scheme`. The `.dark` class sits on `<html>`, so base colors live on `<body>` in `src/index.css` — `dark:` utilities applied to `html` itself never match (`.dark html`). jsdom doesn't compute CSS, so only the e2e axe run catches contrast/theme regressions.
+- Brand text/buttons use `brand-700` on light backgrounds; `brand-600` fails WCAG AA contrast with white or stone-50.
 - Accessibility is an acceptance criterion: WCAG 2.1 AA, full keyboard play (`V`/`F`, `←`/`→`, `Enter` for next), feedback announced via `aria-live="polite"`, correct/incorrect never conveyed by color alone, works from 360px width, V/F buttons ≥ 48px tall.
 - Perf budget: initial JS < 200 KB gzip.

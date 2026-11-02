@@ -14,6 +14,7 @@ playwright-report
 test-results
 blob-report
 playwright/.cache
+lighthouse-report
 
 # Supabase CLI (estado local do link/branches)
 supabase/.temp
