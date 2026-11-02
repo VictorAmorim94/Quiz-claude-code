@@ -14,7 +14,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-- `npm run dev` / `build` / `preview`
+- `npm run dev` / `build` / `preview` — ports are fixed (`5173` / `4173`, `strictPort`) because the Edge Functions' CORS (`ALLOWED_ORIGIN`) only allows those origins; a second dev server fails instead of silently moving to 5174 (where every API call is blocked by the browser)
 - `npm run lint` — ESLint **and** `prettier --check`; fix formatting with `npm run format`
 - `npm run typecheck`
 - `npm test` — Vitest (files `src/**/*.test.{ts,tsx}` and `scripts/**/*.test.ts`). Single test: `npx vitest run src/lib/storage.test.ts -t "test name"`
@@ -30,10 +30,10 @@ Vitest runs workers with `--no-experimental-webstorage` (see `vite.config.ts`): 
 ## Deviations from the PRD (no local Supabase/Docker)
 
 - Development uses a Supabase **Cloud** dev project, not `supabase start`. The CLI runs via `npx supabase`; functions deploy with `--use-api` (no Docker).
-- `db:reset` is a script that truncates `sessions`/`session_answers`/`leaderboard` on the dev project and re-seeds; it is not `supabase db reset`.
+- `db:reset` is a script that truncates `sessions`/`session_answers`/`leaderboard` on the dev project and re-seeds; it is not `supabase db reset`. By default it seeds `content/questions.json` and deactivates the fixture IDs (`9xx`); `-- --fixture` does the opposite. Only one bank is active at a time.
 - `ALLOWED_ORIGIN` accepts a comma-separated list (so `http://localhost:5173` works in dev); `RATE_LIMIT_PER_HOUR` env (default 30) is raised on dev so e2e runs don't hit RN15.
 - Answer recording and leaderboard submission are SQL functions (`record_answer`, `submit_to_leaderboard`, executable only by `service_role`) that lock the session row, so concurrent requests can't break ordering/once-only rules. Edge Functions validate input and map errors.
-- The user writes the 90 real questions in `content/questions.json`; `content/questions.dev.json` is a dev-only fixture (items marked `[DEV]`) and must never be seeded into prod.
+- `content/questions.json` holds the 90 real questions (IDs 001–899), each checked against the docs at `code.claude.com/docs/en/...` (the old `docs.claude.com/en/docs/claude-code/...` URLs now redirect there). `content/questions.dev.json` is a dev-only fixture (IDs 9xx, items marked `[DEV]`), currently **inactive** in the dev DB, and must never be seeded into prod.
 
 ## Core architecture invariant: the answer key never reaches the browser
 

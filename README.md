@@ -22,19 +22,19 @@ O desenvolvimento usa um projeto **Supabase Cloud de dev** (não há Supabase lo
 
 ## Scripts
 
-| Script                   | O que faz                                                       |
-| ------------------------ | --------------------------------------------------------------- |
-| `npm run dev`            | Servidor de desenvolvimento                                     |
-| `npm run build`          | Typecheck + build de produção                                   |
-| `npm run preview`        | Serve o build                                                   |
-| `npm run lint`           | ESLint + checagem do Prettier                                   |
-| `npm run format`         | Formata o código com Prettier                                   |
-| `npm run typecheck`      | TypeScript sem emitir arquivos                                  |
-| `npm test`               | Testes unitários e de componentes (Vitest)                      |
-| `npm run test:e2e`       | Testes end-to-end (Playwright) contra o projeto de dev          |
-| `npm run test:functions` | Testes das Edge Functions (`deno test`)                         |
-| `npm run seed`           | Valida `content/questions.json` e faz upsert na tabela          |
-| `npm run db:reset`       | Limpa sessões e ranking do projeto de dev e roda o seed de novo |
+| Script                   | O que faz                                                                                  |
+| ------------------------ | ------------------------------------------------------------------------------------------ |
+| `npm run dev`            | Servidor de desenvolvimento                                                                |
+| `npm run build`          | Typecheck + build de produção                                                              |
+| `npm run preview`        | Serve o build                                                                              |
+| `npm run lint`           | ESLint + checagem do Prettier                                                              |
+| `npm run format`         | Formata o código com Prettier                                                              |
+| `npm run typecheck`      | TypeScript sem emitir arquivos                                                             |
+| `npm test`               | Testes unitários e de componentes (Vitest)                                                 |
+| `npm run test:e2e`       | Testes end-to-end (Playwright) contra o projeto de dev                                     |
+| `npm run test:functions` | Testes das Edge Functions (`deno test`)                                                    |
+| `npm run seed`           | Valida `content/questions.json` e faz upsert na tabela                                     |
+| `npm run db:reset`       | Limpa sessões e ranking do dev e refaz o seed do banco real (`-- --fixture` usa o fixture) |
 
 ## Conteúdo
 

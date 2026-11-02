@@ -108,6 +108,14 @@ async function post<T>(path: string, body: unknown, schema: z.ZodType<T>): Promi
       body: JSON.stringify(body),
     });
   } catch {
+    if (import.meta.env.DEV) {
+      // Falha de rede em dev quase sempre é CORS: a origem da página não está
+      // no secret ALLOWED_ORIGIN das Edge Functions (ex.: Vite em outra porta).
+      console.warn(
+        `[api] Falha de rede em ${path}. Se for CORS, confira se "${window.location.origin}" ` +
+          'está no secret ALLOWED_ORIGIN das Edge Functions.',
+      );
+    }
     throw new ApiError(0, 'NETWORK', 'Não foi possível conectar. Verifique sua internet.');
   }
 

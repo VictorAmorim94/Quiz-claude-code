@@ -1,6 +1,9 @@
 /**
- * Limpa sessões, respostas e ranking do projeto de DEV e roda o seed do fixture.
+ * Limpa sessões, respostas e ranking do projeto de DEV e refaz o seed.
  * Substitui o `supabase db reset` (não usamos Supabase local).
+ *
+ *   npm run db:reset                → seed de content/questions.json e desativa o fixture [DEV]
+ *   npm run db:reset -- --fixture   → seed do fixture content/questions.dev.json
  *
  * Proteção: só roda com SUPABASE_ENV=dev no .env.local.
  */
@@ -14,6 +17,7 @@ if (env.SUPABASE_ENV !== 'dev') {
   process.exit(1);
 }
 
+const useFixture = process.argv.includes('--fixture');
 const db = createClient(env.VITE_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY, {
   auth: { persistSession: false },
 });
@@ -28,4 +32,15 @@ for (const table of ['leaderboard', 'sessions'] as const) {
   console.log(`✔ ${table} limpa`);
 }
 
-await seed(true);
+// Só um dos bancos fica ativo: o real (IDs 001–899) ou o fixture (IDs 9xx).
+// Nada é apagado, porque IDs de perguntas são permanentes.
+const { error: deactivateError } = await db
+  .from('questions')
+  .update({ active: false, updated_at: new Date().toISOString() })
+  .filter('id', 'match', useFixture ? '-[0-8][0-9]{2}$' : '-9[0-9]{2}$');
+if (deactivateError) {
+  console.error(`Falha ao desativar perguntas: ${deactivateError.message}`);
+  process.exit(1);
+}
+
+await seed(useFixture);

@@ -15,7 +15,7 @@
   "statement": "Uma frase, até 200 caracteres, 100% verdadeira ou 100% falsa.",
   "answer": true,
   "explanation": "De 2 a 4 frases. Diz por que é V ou F e, se for F, qual é a verdade.",
-  "doc_url": "https://docs.claude.com/en/docs/claude-code/overview",
+  "doc_url": "https://code.claude.com/docs/en/overview",
   "active": true
 }
 ```
@@ -23,7 +23,7 @@
 - `id`: `{beg|int|adv}-NNN`, com o prefixo batendo com o `level`. Use **001–899**; a faixa 900+ é do fixture de dev.
 - IDs são permanentes: nunca reutilize nem apague. Para tirar uma pergunta do jogo, use `"active": false`.
 - `category`: `fundamentos`, `interfaces`, `seguranca`, `contexto`, `comandos`, `workflows`, `extensibilidade` ou `automacao`.
-- `doc_url`: documentação oficial (`docs.claude.com`, `docs.anthropic.com` ou `code.claude.com`).
+- `doc_url`: documentação oficial. Use `https://code.claude.com/docs/en/<página>`; os endereços antigos `docs.claude.com/en/docs/claude-code/...` hoje redirecionam para lá.
 
 ## Regras (prd.md §6)
 
